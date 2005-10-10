@@ -8,7 +8,7 @@ License:	GPL v2
 Group:		X11/Applications/Science
 Source0:	http://download.berlios.de/kalgebra/%{name}.%{_snap}.tar.bz2
 # Source0-md5:	69d1b5d1bb8a4c89d4b2e30f16fd73ca
-URL:		http://kalgebra.sorurceforge.net/
+URL:		http://kalgebra.sourceforge.net/
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	kdelibs-devel >= 9:3.2.0
@@ -19,6 +19,12 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 KAlgebra is a MathML-based graph calculator, thought to bring to the
 user its power by solving expressions written in MathML or calculating
 converted common equations to MathML.
+
+%description -l pl
+KAlgebra to oparty na MathML-u kalkulator wykresów, wymy¶lony, aby
+dostarczyæ u¿ytkownikom swoj± moc poprzez rozwi±zywanie równañ
+napisanych w MathML-u lub obliczanie przekszta³conych do MathML-a
+popularnych wyra¿eñ.
 
 %prep
 %setup -q -n %{name}.kdevelop
