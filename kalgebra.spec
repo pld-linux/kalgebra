@@ -1,13 +1,13 @@
-%define		_snap	20051006
 Summary:	Math-ML based graph calculator
 Summary(pl):	Oparty na Math-ML kalkulator wykresów
 Name:		kalgebra
-Version:	0.%{_snap}.1
+Version:	0.4.1
 Release:	1
 License:	GPL v2
 Group:		X11/Applications/Science
-Source0:	http://download.berlios.de/kalgebra/%{name}.%{_snap}.tar.bz2
-# Source0-md5:	69d1b5d1bb8a4c89d4b2e30f16fd73ca
+Source0:	http://download.berlios.de/kalgebra/%{name}-%{version}.tar.bz2
+# Source0-md5:	0410f2e57c0f9659cafb23257578a199
+Patch0:		%{name}-desktop.patch
 URL:		http://kalgebra.sourceforge.net/
 BuildRequires:	autoconf
 BuildRequires:	automake
@@ -27,7 +27,8 @@ napisanych w MathML-u lub obliczanie przekszta³conych do MathML-a
 popularnych wyra¿eñ.
 
 %prep
-%setup -q -n %{name}.kdevelop
+%setup -q -n %{name}
+%patch0 -p1
 
 %build
 cp -f /usr/share/automake/config.sub admin
@@ -51,7 +52,7 @@ install -d $RPM_BUILD_ROOT{%{_pixmapsdir},%{_desktopdir}}
 	kde_libs_htmldir=%{_kdedocdir} \
 	kdelnkdir=%{_desktopdir} \
 
-mv -f $RPM_BUILD_ROOT{/usr/share/applnk/Utilities/kalgebra.desktop,%{_desktopdir}}
+mv -f $RPM_BUILD_ROOT{%{_datadir}/applnk/Utilities/kalgebra.desktop,%{_desktopdir}}
 
 %find_lang %{name} --with-kde
 
