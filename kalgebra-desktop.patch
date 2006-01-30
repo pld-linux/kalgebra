@@ -1,10 +1,36 @@
 --- kalgebra/src/kalgebra.desktop	2005-11-21 22:16:59.000000000 +0100
 +++ kalgebra/src/kalgebra.desktop	2006-01-28 14:16:05.000000000 +0100
-@@ -4,6 +4,7 @@
+@@ -4,29 +4,10 @@
  Exec=kalgebra
  Icon=kalgebra
  Type=Application
+-Comment=Graph calculator.
 +Categories=Qt;KDE;Education;Science;X-Plotting;
- Comment=Graph calculator.
++Comment=Graph calculator
  Comment[ca]=Calculadora gràfica
- Comment[da]=
+-Comment[da]=
+-Comment[de]=
+-Comment[el]=
+ Comment[es]=Calculadora gráfica
+-Comment[et]=
+ Comment[fr]=Calculatrice graphique
+-Comment[hi]=
+-Comment[hu]=
+-Comment[is]=
+-Comment[it]=
+-Comment[ja]=
+-Comment[nb]=
+-Comment[nl]=
+-Comment[pl]=
+-Comment[pt]=
+-Comment[pt_BR]=
+-Comment[ru]=
+-Comment[sl]=
+-Comment[sr]=
+-Comment[sr@Latn]=
+-Comment[sv]=
+-Comment[ta]=
+-Comment[tg]=
+-Comment[zh_CN]=
++Comment[pl]=Kalkulator wykresów
++Type=Application
