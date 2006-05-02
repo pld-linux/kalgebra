@@ -1,12 +1,15 @@
+
+%define		_snap	20060501
 Summary:	Math-ML based graph calculator
+Summary(de):	Ein auf Math-ML basierender Graphen-Zeichner
 Summary(pl):	Oparty na Math-ML kalkulator wykresów
 Name:		kalgebra
-Version:	0.4.1
-Release:	1
+Version:	0.5
+Release:	0.%{_snap}.1
 License:	GPL v2
 Group:		X11/Applications/Science
-Source0:	http://download.berlios.de/kalgebra/%{name}-%{version}.tar.bz2
-# Source0-md5:	0410f2e57c0f9659cafb23257578a199
+Source0:	http://download.berlios.de/kalgebra/%{name}-%{_snap}.tar.bz2
+# Source0-md5:	8fb7edabb6b59c7606decf2f70da8dcd
 Patch0:		%{name}-desktop.patch
 URL:		http://kalgebra.sourceforge.net/
 BuildRequires:	autoconf
@@ -19,6 +22,11 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 KAlgebra is a MathML-based graph calculator, thought to bring to the
 user its power by solving expressions written in MathML or calculating
 converted common equations to MathML.
+
+%description -l de
+KAlgebra ist ein auf MathML basierender Graphen-Zeichner, der entstanden
+ist um den Benutzer bei MathML Gleichungen zu helfen oder bekannte
+Ausdrücke die in MathLM geschrieben worden sind zu lösen.
 
 %description -l pl
 KAlgebra to oparty na MathML-u kalkulator wykresów, wymy¶lony, aby
