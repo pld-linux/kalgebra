@@ -1,8 +1,8 @@
 
 %define		_snap	20060501
 Summary:	Math-ML based graph calculator
-Summary(de.UTF-8):   Ein auf Math-ML basierender Graphen-Zeichner
-Summary(pl.UTF-8):   Oparty na Math-ML kalkulator wykresów
+Summary(de.UTF-8):	Ein auf Math-ML basierender Graphen-Zeichner
+Summary(pl.UTF-8):	Oparty na Math-ML kalkulator wykresów
 Name:		kalgebra
 Version:	0.5
 Release:	0.%{_snap}.1
