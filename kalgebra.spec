@@ -1,75 +1,64 @@
+%define		_state		stable
+%define		orgname		kalgebra
 
-%define		_snap	20060501
-Summary:	Math-ML based graph calculator
-Summary(de.UTF-8):	Ein auf Math-ML basierender Graphen-Zeichner
-Summary(pl.UTF-8):	Oparty na Math-ML kalkulator wykresów
+######		Unknown group!
+Summary:	K Desktop Environment - Mathematical calculator
 Name:		kalgebra
-Version:	0.5
-Release:	0.%{_snap}.1
-License:	GPL v2
-Group:		X11/Applications/Science
-Source0:	http://download.berlios.de/kalgebra/%{name}-%{_snap}.tar.bz2
-# Source0-md5:	8fb7edabb6b59c7606decf2f70da8dcd
-Patch0:		%{name}-desktop.patch
-URL:		http://kalgebra.sourceforge.net/
-BuildRequires:	autoconf
-BuildRequires:	automake
-BuildRequires:	kdelibs-devel >= 9:3.2.0
-BuildRequires:	rpmbuild(macros) >= 1.129
+Version:	4.7.0
+Release:	1
+License:	GPL
+Group:		X11/Applications/
+Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{version}/src/%{orgname}-%{version}.tar.bz2
+# Source0-md5:	c9ed66f8727afa1945767fd8800c6495
+URL:		http://www.kde.org/
+BuildRequires:	OpenGL-devel
+BuildRequires:	kde4-kdelibs-devel
+BuildRequires:	readline-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
-KAlgebra is a MathML-based graph calculator, thought to bring to the
-user its power by solving expressions written in MathML or calculating
-converted common equations to MathML.
-
-%description -l de.UTF-8
-KAlgebra ist ein auf MathML basierender Graphen-Zeichner, der entstanden
-ist um den Benutzer bei MathML Gleichungen zu helfen oder bekannte
-Ausdrücke die in MathLM geschrieben worden sind zu lösen.
-
-%description -l pl.UTF-8
-KAlgebra to oparty na MathML-u kalkulator wykresów, wymyślony, aby
-dostarczyć użytkownikom swoją moc poprzez rozwiązywanie równań
-napisanych w MathML-u lub obliczanie przekształconych do MathML-a
-popularnych wyrażeń.
+KAlgebra is a mathematical calculator based on MathML content markup
+language.
 
 %prep
-%setup -q -n %{name}
-%patch0 -p1
+%setup -q -n %{orgname}-%{version}
 
 %build
-cp -f /usr/share/automake/config.sub admin
-%{__make} -f admin/Makefile.common cvs
-
-%configure \
-%if "%{_lib}" == "lib64"
-	--enable-libsuffix=64 \
-%endif
-	--%{?debug:en}%{!?debug:dis}able-debug%{?debug:=full} \
-	--with-qt-libraries=%{_libdir}
+install -d build
+cd build
+%cmake \
+	..
 %{__make}
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT{%{_pixmapsdir},%{_desktopdir}}
 
-%{__make} install \
+%{__make} -C build/ install \
 	DESTDIR=$RPM_BUILD_ROOT \
-	kde_htmldir=%{_kdedocdir} \
-	kde_libs_htmldir=%{_kdedocdir} \
-	kdelnkdir=%{_desktopdir} \
-
-mv -f $RPM_BUILD_ROOT{%{_datadir}/applnk/Utilities/kalgebra.desktop,%{_desktopdir}}
+	kde_htmldir=%{_kdedocdir}
 
 %find_lang %{name} --with-kde
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
+%post -p /sbin/ldconfig
+%postun -p /sbin/ldconfig
+
 %files -f %{name}.lang
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_bindir}/*
-%{_desktopdir}/*.desktop
-%{_iconsdir}/*/*/apps/%{name}.png
-%{_datadir}/apps/%{name}
+%attr(755,root,root) %ghost %{_libdir}/libanalitza.so.?
+%attr(755,root,root) %{_libdir}/libanalitza.so.*.*.*
+%attr(755,root,root) %{_libdir}/libanalitzagui.so.?
+%attr(755,root,root) %{_libdir}/libanalitzagui.so.*.*.*
+%attr(755,root,root) %{_bindir}/kalgebra
+%attr(755,root,root) %{_bindir}/kalgebramobile
+%{_desktopdir}/kde4/kalgebra.desktop
+%attr(755,root,root) %{_libdir}/kde4/plasma_applet_kalgebra.so
+%{_datadir}/kde4/services/kalgebraplasmoid.desktop
+%{_iconsdir}/hicolor/*x*/apps/kalgebra.png
+%{_datadir}/apps/katepart/syntax/kalgebra.xml
+%attr(755,root,root) %{_bindir}/calgebra
+%{_datadir}/kde4/servicetypes/kalgebrascript.desktop
+%{_desktopdir}/kde4/kalgebramobile.desktop
+%{_datadir}/apps/kalgebra
