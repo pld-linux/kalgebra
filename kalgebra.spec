@@ -1,19 +1,19 @@
 %define		_state		stable
 %define		orgname		kalgebra
 
-######		Unknown group!
 Summary:	K Desktop Environment - Mathematical calculator
 Name:		kalgebra
-Version:	4.7.0
+Version:	4.7.1
 Release:	1
 License:	GPL
-Group:		X11/Applications/
+Group:		X11/Applications
 Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{version}/src/%{orgname}-%{version}.tar.bz2
 # Source0-md5:	c9ed66f8727afa1945767fd8800c6495
 URL:		http://www.kde.org/
 BuildRequires:	OpenGL-devel
 BuildRequires:	kde4-kdelibs-devel
 BuildRequires:	readline-devel
+Obsoletes:	kde4-kdeedu-kalgebra < 4.7.0
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
