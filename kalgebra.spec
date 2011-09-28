@@ -8,7 +8,7 @@ Release:	2
 License:	GPL
 Group:		X11/Applications
 Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{version}/src/%{orgname}-%{version}.tar.bz2
-# Source0-md5:	c9ed66f8727afa1945767fd8800c6495
+# Source0-md5:	5ed2c0a4ba7e2792f33c36d4d82dbbdf
 URL:		http://www.kde.org/
 BuildRequires:	OpenGL-devel
 BuildRequires:	kde4-kdelibs-devel
